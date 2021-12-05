@@ -1,5 +1,17 @@
-import { Table } from "semantic-ui-react";
+import { Table, Button } from "semantic-ui-react";
 import React from "react";
+import filledHeart from './../assets/glyphs/glyph_heart_fill_16'
+import styled from 'styled-components'
+
+const StyledHeart = styled(Button)`
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 0;
+  background: transparent;
+  background
+`;
 
 export const CharacterTableHeader = ({
   column,
@@ -8,6 +20,16 @@ export const CharacterTableHeader = ({
 }) => (
   <Table.Header>
     <Table.Row>
+    <Table.HeaderCell
+        width={1}
+        sorted={column === "favorite" ? direction : undefined}
+        onClick={() => handleSort("favorite")}
+      >
+          <StyledHeart
+          icon={filledHeart}
+          color="black"
+        />
+      </Table.HeaderCell>
       <Table.HeaderCell
         width={1}
         sorted={column === "name" ? direction : undefined}
@@ -42,13 +64,6 @@ export const CharacterTableHeader = ({
         onClick={() => handleSort("homeWorld")}
       >
         Species
-      </Table.HeaderCell>
-      <Table.HeaderCell
-        width={1}
-        sorted={column === "favorite" ? direction : undefined}
-        onClick={() => handleSort("favorite")}
-      >
-        Favorite
       </Table.HeaderCell>
     </Table.Row>
   </Table.Header>
