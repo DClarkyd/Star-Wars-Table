@@ -9,8 +9,7 @@ const StyledHeart = styled(Button)`
   -moz-appearance: none;
   outline: none;
   border: 0;
-  background: transparent;
-  background
+  background: transparent !important;
 `;
 
 export const CharacterTableHeader = ({
@@ -27,7 +26,6 @@ export const CharacterTableHeader = ({
       >
           <StyledHeart
           icon={filledHeart}
-          color="black"
         />
       </Table.HeaderCell>
       <Table.HeaderCell

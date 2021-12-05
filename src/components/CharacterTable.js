@@ -46,7 +46,6 @@ export const CharacterTable = ({
   const { loading, error, data } = useQuery(CHARACTERS);
 
   const characters  = data?.allPeople?.edges
-  console.log(characters)
   const characterRows = characters?.map((character, index) =>(
     <CharacterRow key={index} character={character.node} addFavorite={addFavorite} />
   ));
@@ -59,8 +58,6 @@ export const CharacterTable = ({
 
   return (
     <React.Fragment>
-      <CharacterPageSizeSelect limit={limit} onChangeLimit={onChangeLimit} />
-      Total count: {totalCount}.
       <Table celled selectable sortable>
         <CharacterTableHeader
           column={column}
