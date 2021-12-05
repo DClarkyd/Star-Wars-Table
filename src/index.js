@@ -7,13 +7,11 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
-  gql
 } from "@apollo/client";
 import ExchangeRates from './components/exchangeRates';
 
 const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  uri: 'http://localhost:9011/',
   cache: new InMemoryCache()
 });
 

@@ -6,20 +6,32 @@ import {
   } from "@apollo/client";
 
 function ExchangeRates() {
-    const EXCHANGE_RATES = gql`
-        query GetExchangeRates {
-            rates(currency: "USD") {
-            currency
-            rate
-            }
-        }
+    const STAR_SHIPS = gql`
+        query GetAllStarships {
+                person(personID: 4) {
+                  name
+                  gender
+                  homeworld {
+                    name
+                  }
+                  starshipConnection {
+                    edges {
+                      node {
+                        id
+                        manufacturers
+                      }
+                    }
+                  }
+                }
+              }
     `;
-    const { loading, error, data } = useQuery(EXCHANGE_RATES);
+    const { loading, error, data } = useQuery(STAR_SHIPS);
+    console.log(data)
   
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
   
-    return data.rates.map(({ currency, rate }) => (
+    return data?.rates?.map(({ currency, rate }) => (
       <div key={currency}>
         <p>
           {currency}: {rate}
