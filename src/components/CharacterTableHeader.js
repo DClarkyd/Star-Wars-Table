@@ -38,6 +38,13 @@ export const CharacterTableHeader = ({
       </Table.HeaderCell>
       <Table.HeaderCell
         width={1}
+        sorted={column === "homeWorld" ? direction : undefined}
+        onClick={() => handleSort("homeWorld")}
+      >
+        Species
+      </Table.HeaderCell>
+      <Table.HeaderCell
+        width={1}
         sorted={column === "favorite" ? direction : undefined}
         onClick={() => handleSort("favorite")}
       >

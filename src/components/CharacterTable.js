@@ -47,9 +47,12 @@ export const CharacterTable = ({
 
   const characters  = data?.allPeople?.edges
   console.log(characters)
-  const characterRows = characters?.map((character, index) => (
-    <CharacterRow key={index} character={character} addFavorite={addFavorite} />
-  ));
+  const characterRows = characters?.map((character, index) =>{
+    console.log(character.node)
+    return(
+    <CharacterRow key={index} character={character.node} addFavorite={addFavorite} />
+  );
+  });
   const handleChangePage = (
     event,
     { activePage }
