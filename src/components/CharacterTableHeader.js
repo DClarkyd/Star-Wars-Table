@@ -34,7 +34,7 @@ export const CharacterTableHeader = ({
         sorted={column === "homeWorld" ? direction : undefined}
         onClick={() => handleSort("homeWorld")}
       >
-        homeWorld
+        Home World
       </Table.HeaderCell>
       <Table.HeaderCell
         width={1}

@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
   },
 });
 
-const appolloClient = new ApolloClient({
+const apolloClient = new ApolloClient({
   uri: 'http://localhost:9011/',
   cache: new InMemoryCache()
 });
@@ -28,11 +28,10 @@ const appolloClient = new ApolloClient({
 function App  (){ 
   return(
     <BrowserRouter>
-     <ApolloProvider client={appolloClient}>
+     <ApolloProvider client={apolloClient}>
        <QueryClientProvider client={queryClient}>
            <QueryParamProvider > 
              <CharacterList/>
-             <ExchangeRates/>
            </QueryParamProvider>
          </QueryClientProvider>
      </ApolloProvider>
@@ -40,15 +39,3 @@ function App  (){
   )
 }
 export default App;
-
-
-//   <BrowserRouter>  
-//   <ApolloProvider client={appolloClient}>
-//   <QueryClientProvider client={queryClient}>
-//       <QueryParamProvider ReactRouterRoute={Route}> 
-//         <CharacterList/>
-//         <ExchangeRates/>
-//       </QueryParamProvider>
-//     </QueryClientProvider>
-// </ApolloProvider>
-// </BrowserRouter>,

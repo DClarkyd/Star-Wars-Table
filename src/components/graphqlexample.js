@@ -5,27 +5,27 @@ import {
     gql
   } from "@apollo/client";
 
-function ExchangeRates() {
-    const STAR_SHIPS = gql`
-        query GetAllStarships {
-                person(personID: 4) {
+function GetCharacters() {
+    const CHARACTERS = gql`
+        query GetAllPeople {
+          allPeople(first: 10) {
+            edges {
+              node {
+                name
+                gender
+                birthYear
+                homeworld {
                   name
-                  gender
-                  homeworld {
-                    name
-                  }
-                  starshipConnection {
-                    edges {
-                      node {
-                        id
-                        manufacturers
-                      }
-                    }
-                  }
+                }
+                species {
+                  name
                 }
               }
+            }
+          }
+        }
     `;
-    const { loading, error, data } = useQuery(STAR_SHIPS);
+    const { loading, error, data } = useQuery(CHARACTERS);
     console.log(data)
   
     if (loading) return <p>Loading...</p>;
@@ -40,4 +40,4 @@ function ExchangeRates() {
     ));
   }
 
-export default ExchangeRates
+export default GetCharacters

@@ -4,9 +4,13 @@ import { Table, Pagination } from "semantic-ui-react";
 import  CharacterPageSizeSelect  from "./CharacterPageSizeSelect";
 import  CharacterTableHeader  from "./CharacterTableHeader";
 import  CharacterRow  from "./CharacterRow";
+import {
+    useQuery,
+    gql
+  } from "@apollo/client";
 
 export const CharacterTable = ({
-  characters,
+  // characters,
   totalCount,
   totalPages,
   column,
@@ -18,6 +22,31 @@ export const CharacterTable = ({
   limit,
   onChangePage,
 }) => {
+
+  const CHARACTERS = gql`
+    query GetAllPeople {
+      allPeople(first: 10) {
+        edges {
+          node {
+            name
+            gender
+            birthYear
+            homeworld {
+              name
+            }
+            species {
+              name
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const { loading, error, data } = useQuery(CHARACTERS);
+
+  const characters  = data?.allPeople?.edges
+  console.log(characters)
   const characterRows = characters?.map((character, index) => (
     <CharacterRow key={index} character={character} addFavorite={addFavorite} />
   ));
