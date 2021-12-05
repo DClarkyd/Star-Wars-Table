@@ -8,7 +8,9 @@ import {
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
-import ExchangeRates from './components/exchangeRates';
+import ExchangeRates from './components/graphqlexample';
+import CharacterList from './components/CharacterList';
+
 
 const client = new ApolloClient({
   uri: 'http://localhost:9011/',
@@ -17,8 +19,8 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
+    <CharacterList/>
     <ExchangeRates/>
-    <App />
   </ApolloProvider>,
   document.getElementById('root')
 );
