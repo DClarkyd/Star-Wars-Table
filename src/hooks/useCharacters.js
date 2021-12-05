@@ -102,17 +102,17 @@ export const useCharacters = () => {
     );
   };
 
-  const query = useQuery(
-    ["characters", { pagination, filter, sort }],
-    getCharactersWithTotalCount,
-    {
-      keepPreviousData: true,
-      initialData: {
-        totalCount: 0,
-        characters: [],
-      },
-    }
-  );
+  // const query = useQuery(
+  //   ["characters", { pagination, filter, sort }],
+  //   getCharactersWithTotalCount,
+  //   {
+  //     keepPreviousData: true,
+  //     initialData: {
+  //       totalCount: 0,
+  //       characters: [],
+  //     },
+  //   }
+  // );
 
   const onSort = (clickedColumn) => {
     const { sortColumn, sortOrder } = sort;
@@ -154,10 +154,10 @@ export const useCharacters = () => {
     filter,
     pagination,
     sort,
-    isLoading: query.isLoading,
-    totalPages: Math.ceil((query.data?.totalCount || 0) / pagination.limit),
-    totalCount: query.data?.totalCount || 0,
-    characters: query.data?.characters || [],
+    // isLoading: query.isLoading,
+    // totalPages: Math.ceil((query.data?.totalCount || 0) / pagination.limit),
+    // totalCount: query.data?.totalCount || 0,
+    // characters: query.data?.characters || [],
   };
 };
 export default useCharacters

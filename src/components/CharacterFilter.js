@@ -10,7 +10,7 @@ const CharacterFilter = ({
   onSubmitFilter,
   filter,
 }) => {
-  const [state, setState] = useState<CharacterFilterState>({
+  const [state, setState] = useState({
     filter: filter,
     filterValid: true,
   });

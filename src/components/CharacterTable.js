@@ -18,7 +18,7 @@ export const CharacterTable = ({
   limit,
   onChangePage,
 }) => {
-  const characterRows = characters.map((character, index) => (
+  const characterRows = characters?.map((character, index) => (
     <CharacterRow key={index} character={character} addFavorite={addFavorite} />
   ));
   const handleChangePage = (
