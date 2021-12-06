@@ -1,11 +1,9 @@
 import React from "react";
-import { Button, Container, Header, Icon, Menu } from "semantic-ui-react";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
-import ExchangeRates from './components/graphqlexample';
 import CharacterList from './components/CharacterList';
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Route } from "react-router-dom";
@@ -28,13 +26,13 @@ const apolloClient = new ApolloClient({
 function App  (){ 
   return(
     <BrowserRouter>
-     <ApolloProvider client={apolloClient}>
-       <QueryClientProvider client={queryClient}>
-           <QueryParamProvider > 
-             <CharacterList/>
-           </QueryParamProvider>
-         </QueryClientProvider>
-     </ApolloProvider>
+      <ApolloProvider client={apolloClient}>
+        <QueryClientProvider client={queryClient}>
+            <QueryParamProvider > 
+              <CharacterList/>
+            </QueryParamProvider>
+          </QueryClientProvider>
+      </ApolloProvider>
     </BrowserRouter>
   )
 }

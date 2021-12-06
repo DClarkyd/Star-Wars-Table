@@ -45,7 +45,7 @@ const CharacterFilter = ({
           <Popup
             trigger={
               <Form.Input
-                placeholder={"Enter a filter."}
+                placeholder={"Search"}
                 name={"filter"}
                 error={!state.filterValid}
                 label={"Filter"}
