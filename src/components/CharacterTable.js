@@ -4,7 +4,7 @@ import CharacterTableHeader from "./CharacterTableHeader";
 import CharacterRow from "./CharacterRow";
 import leftArrow from "./../assets/glyphs/glyph_chevron_left_square";
 import rightArrow from "./../assets/glyphs/glyph_chevron_right_16_square";
-import { useQuery, gql, useMutation } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 import styled from "styled-components";
 
 export const CharacterTable = ({
