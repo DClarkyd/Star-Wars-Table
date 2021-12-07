@@ -40,7 +40,6 @@ const CharacterFilter = ({ totalCount, loading, onSubmitFilter, filter }) => {
                 placeholder={"Search"}
                 name={"filter"}
                 error={!state.filterValid}
-                label={"Filter"}
                 onChange={handleOnChange}
                 icon={"search"}
                 loading={loading}

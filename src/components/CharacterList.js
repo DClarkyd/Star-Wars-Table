@@ -1,9 +1,10 @@
 import React from "react";
 import { Divider, Segment } from "semantic-ui-react";
-import  CharacterTable  from "./CharacterTable";
-import  CharacterFilter  from "./CharacterFilter";
-import  useCharacters  from "../hooks/useCharacters";
-import  useAddFavorite  from "../hooks/useAddFavorite";
+import CharacterTable from "./CharacterTable";
+import CharacterFilter from "./CharacterFilter";
+import useCharacters from "../hooks/useCharacters";
+import useAddFavorite from "../hooks/useAddFavorite";
+import { Header, Card } from "semantic-ui-react";
 
 const CharacterList = () => {
   const {
@@ -23,13 +24,28 @@ const CharacterList = () => {
 
   return (
     <Segment>
+      <Header as="h1">Fans</Header>
+      <Card.Group>
+        <Card>
+          <Card.Content header={"1000"} />
+          <Card.Content>
+            <Card.Description>Female Fans</Card.Description>
+          </Card.Content>
+        </Card>
+        <Card>
+          <Card.Content header={"1000"} />
+          <Card.Content>
+            <Card.Description>Male Fans</Card.Description>
+          </Card.Content>
+        </Card>
+      </Card.Group>
+      <Divider />
       <CharacterFilter
         filter={filter}
         totalCount={totalCount}
         onSubmitFilter={onSubmitFilter}
         loading={isLoading}
       />
-      <Divider />
       <CharacterTable
         vehicles={characters}
         totalCount={totalCount}
@@ -47,5 +63,4 @@ const CharacterList = () => {
   );
 };
 
-
-export default CharacterList
+export default CharacterList;
