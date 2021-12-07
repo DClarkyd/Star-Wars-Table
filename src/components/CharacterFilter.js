@@ -4,12 +4,7 @@ import debounce from "lodash.debounce";
 
 const regex = new RegExp("^[a-zA-Z0-9 ]+$");
 
-const CharacterFilter = ({
-  totalCount,
-  loading,
-  onSubmitFilter,
-  filter,
-}) => {
+const CharacterFilter = ({ totalCount, loading, onSubmitFilter, filter }) => {
   const [state, setState] = useState({
     filter: filter,
     filterValid: true,
@@ -24,10 +19,7 @@ const CharacterFilter = ({
     }
   }, 500);
 
-  const handleOnChange = (
-    event,
-    { value }
-  ) => {
+  const handleOnChange = (event, { value }) => {
     f(value);
   };
 
@@ -64,4 +56,4 @@ const CharacterFilter = ({
     </Form>
   );
 };
-export default CharacterFilter
+export default CharacterFilter;

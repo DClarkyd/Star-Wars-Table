@@ -1,4 +1,4 @@
-import  useQuery  from "react-query";
+import useQuery from "react-query";
 import {
   StringParam,
   useQueryParams,
@@ -6,11 +6,7 @@ import {
   NumberParam,
 } from "use-query-params";
 
-const constructQuery = (
-  pagination,
-  sort,
-  filter
-) => {
+const constructQuery = (pagination, sort, filter) => {
   const params = [];
   params.push(`_limit=${pagination.limit}`);
   params.push(`_page=${pagination.page}`);
@@ -21,43 +17,21 @@ const constructQuery = (
   }
 
   return params.join("&");
-}
+};
 
-export const getCharactersWithTotalCount =
-  async ({ queryKey }) => {
-    const { pagination, filter, sort } = queryKey[1];
+export const getCharactersWithTotalCount = async ({ queryKey }) => {
+  const { pagination, filter, sort } = queryKey[1];
 
-    const query = constructQuery(pagination, sort, filter);
+  const query = constructQuery(pagination, sort, filter);
 
-    // Make a request without limit first to get the total number of data.
-    let totalCountQuery = "";
-    if (filter !== "") {
-      totalCountQuery = `q=${encodeURIComponent(filter)}`;
-    }
-
-    // return Promise.all([
-    //   fetch(`/api/v1/vehicles?${totalCountQuery}`),
-    //   fetch(`/api/v1/vehicles?${query}`),
-    // ])
-    //   .then(async (values) => {
-    //     const totalVehicles = await values[0].json();
-    //     const vehicles = await values[1].json();
-    //     return {
-    //       totalCount: totalVehicles.length,
-    //       vehicles,
-    //     };
-    //   })
-    // .catch((error) => {
-    //   console.log(`Failed to load data: ${error.message}`);
-    //   return {
-    //     totalCount: 0,
-    //     vehicles: [],
-    //   };
-    // });
-  };
+  let totalCountQuery = "";
+  if (filter !== "") {
+    totalCountQuery = `q=${encodeURIComponent(filter)}`;
+  }
+};
 
 export const useCharacters = () => {
-  const [queryParams, setQueryParams] = useQueryParams ({
+  const [queryParams, setQueryParams] = useQueryParams({
     filter: withDefault(StringParam, ""),
     page: withDefault(NumberParam, 1),
     limit: withDefault(NumberParam, 10),
@@ -117,8 +91,7 @@ export const useCharacters = () => {
   const onSort = (clickedColumn) => {
     const { sortColumn, sortOrder } = sort;
 
-    let newOrder =
-      sortOrder === "ascending" ? "descending" : "ascending";
+    let newOrder = sortOrder === "ascending" ? "descending" : "ascending";
     if (sortColumn !== clickedColumn) {
       newOrder = "ascending";
     }
@@ -160,4 +133,4 @@ export const useCharacters = () => {
     // characters: query.data?.characters || [],
   };
 };
-export default useCharacters
+export default useCharacters;
