@@ -9,6 +9,7 @@ import styled from "styled-components";
 
 export const CharacterTable = ({
   column,
+  searchedCharacters,
   addFavorite,
   direction,
   handleSort,
@@ -50,11 +51,14 @@ export const CharacterTable = ({
     notifyOnNetworkStatusChange: true,
   });
 
-  const characters = newCharacters || data?.allPeople?.edges;
+  console.log(searchedCharacters);
+
+  const characters =
+    searchedCharacters || newCharacters || data?.allPeople?.edges;
   const characterRows = characters?.map((character, index) => (
     <CharacterRow
       key={index}
-      character={character.node}
+      character={character?.node ? character.node : character}
       addFavorite={addFavorite}
     />
   ));

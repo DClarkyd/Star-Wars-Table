@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Divider, Segment } from "semantic-ui-react";
 import CharacterTable from "./CharacterTable";
 import useCharacters from "../hooks/useCharacters";
@@ -24,7 +24,7 @@ const CharacterList = () => {
     onSort,
   } = useCharacters();
   const addFavorite = useAddFavorite();
-
+  const [selectedCharacter, setCharacter] = useState("");
   const countryOptions = [
     { key: "af", value: "af", flag: "af", text: "Afghanistan" },
     { key: "ax", value: "ax", flag: "ax", text: "Aland Islands" },
@@ -71,11 +71,17 @@ const CharacterList = () => {
 
   const { loading, error, data, fetchMore } = useQuery(ALL_PEOPLE);
   const charNames = data?.allPeople?.people?.map((person) => {
-    let rObj = {};
+    let rObj = { ...person };
     rObj["text"] = person.name;
+    rObj["value"] = person.name;
     rObj["key"] = person.id;
     return rObj;
   });
+  const selectChar = (e, { value }) => {
+    setCharacter(charNames.filter((person) => person.name === value));
+  };
+
+  console.log(selectedCharacter);
   return (
     <Wrapper>
       <Segment>
@@ -100,10 +106,11 @@ const CharacterList = () => {
           fluid
           search
           selection
+          onChange={selectChar}
           options={charNames}
         />
         <CharacterTable
-          vehicles={characters}
+          searchedCharacters={selectedCharacter || characters}
           totalCount={totalCount}
           totalPages={totalPages}
           currentPage={pagination.page}
