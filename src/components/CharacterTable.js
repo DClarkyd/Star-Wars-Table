@@ -18,7 +18,7 @@ export const CharacterTable = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [pageInfo, setPageInfo] = useState();
   const [isLoadingMore, setIsLoadingMore] = useState(false);
-
+  const [hasInitiallyFetched, setFetched] = useState(false);
   const CHARACTERS = gql`
     query GetAllPeople($after: String) {
       allPeople(first: 10, after: $after) {
@@ -51,10 +51,16 @@ export const CharacterTable = ({
     notifyOnNetworkStatusChange: true,
   });
 
-  console.log(searchedCharacters);
+  const originalChars = data?.allPeople?.edges.map((chars) => ({
+    ...chars.node,
+    useFavorite: false,
+  }));
 
-  const characters =
-    searchedCharacters || newCharacters || data?.allPeople?.edges;
+  if (data?.allPeople?.edges && !hasInitiallyFetched) {
+    setNewCharacters(originalChars);
+    setFetched(true);
+  }
+  const characters = searchedCharacters || newCharacters;
   const characterRows = characters?.map((character, index) => (
     <CharacterRow
       key={index}
