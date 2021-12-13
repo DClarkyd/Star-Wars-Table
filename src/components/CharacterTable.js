@@ -17,7 +17,6 @@ export const CharacterTable = ({
   const [newCharacters, setNewCharacters] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [pageInfo, setPageInfo] = useState();
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasInitiallyFetched, setFetched] = useState(false);
   const CHARACTERS = gql`
     query GetAllPeople($after: String) {

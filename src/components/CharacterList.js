@@ -62,7 +62,7 @@ const CharacterList = () => {
     <Wrapper>
       <Segment>
         <Header as="h1">Fans</Header>
-        <Card.Group>
+        {/* <Card.Group>
           <Card>
             <Card.Content header={"1000"} />
             <Card.Content>
@@ -75,7 +75,7 @@ const CharacterList = () => {
               <Card.Description>Male Fans</Card.Description>
             </Card.Content>
           </Card>
-        </Card.Group>
+        </Card.Group> */}
         <Divider />
         {selectedCharacter && (
           <Button onClick={() => setCharacter("")}>Reset</Button>
